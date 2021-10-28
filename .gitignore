@@ -8,8 +8,6 @@
 *.ctxt
 
 .idea/
-**/.idea/
-.idea/vcs.xml
 
 target/
 
