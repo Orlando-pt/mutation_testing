@@ -1,4 +1,4 @@
-# Just a experiment related to **Mutation Testing**
+# Project meant to explore **mutation testing** methologies.
 
 - For this purpose we are using Pitest with Junit tests
 
