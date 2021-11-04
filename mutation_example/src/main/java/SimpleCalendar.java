@@ -1,20 +1,25 @@
 public class SimpleCalendar {
     // TODO explicar o que isto e
     private final static int YEAR_OF_CHANGE = 1582;
-    private final static int MONTH_OF_CHANGE = 8;
+    private final static int MONTH_OF_CHANGE = 10;
     private final static int DAY_OF_CHANGE = 4;
 
     public WeekDays getDayOfWeek(SimpleDate date) {
         SimpleDate gregorianDate = getGregorianDate(date);
 
-        int century = parseCentury(gregorianDate.getYear());
-        int yearInTheCentury = parseYearInTheCentury(gregorianDate.getYear());
+        int year = gregorianDate.getYear();
 
-        double result = gregorianDate.getDay() + 5 * century + yearInTheCentury + (century / 4) + (yearInTheCentury / 4)
-                + (2.6 * parseMonth(gregorianDate.getMonth()) - 0.2);
+        if (gregorianDate.getMonth() < 3){
+            year-=1;
+        }
 
-        int res = (int) (result % 7);
-        return WeekDays.valueOf(res);
+        int century = parseCentury(year);
+        int yearInTheCentury = parseYearInTheCentury(year);
+
+        long result = Math.round(gregorianDate.getDay() + 5 * century + yearInTheCentury + Math.floor((century / 4)) + Math.floor((yearInTheCentury / 4))
+                + Math.floor((2.6 * parseMonth(gregorianDate.getMonth()) - 0.2)));
+
+        return WeekDays.valueOf(Math.floorMod(result, 7));
     }
 
     // method that checks

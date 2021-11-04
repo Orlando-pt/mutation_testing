@@ -38,7 +38,7 @@ public class SimpleDate {
     //TODO Corrigir
     public void addDays(int days) {
         int sumDays = this.day + days;
-        int remainingDays = sumDays - numberDaysMonth(this.month, this.year)
+        int remainingDays = sumDays - numberDaysMonth(this.month, this.year);
         if (remainingDays < 0) {
             this.day = sumDays;
             return;

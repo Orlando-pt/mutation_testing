@@ -32,4 +32,13 @@ public class SimpleCalendarTest {
                 )
         );
     }
+
+    @Test
+    void getDayOfWeek24Jan1988ShouldReturnSunday() {
+        assertEquals(
+                this.gregorianCalendar.getDayOfWeek(
+                        new SimpleDate(24, 1, 1988)
+                ), WeekDays.SUNDAY
+        );
+    }
 }
