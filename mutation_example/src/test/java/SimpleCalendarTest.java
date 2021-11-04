@@ -41,4 +41,13 @@ public class SimpleCalendarTest {
                 ), WeekDays.SUNDAY
         );
     }
+
+    @Test
+    void getDayOfWeek15Apr1452ShouldReturnSaturday() {
+        assertEquals(
+                this.gregorianCalendar.getDayOfWeek(
+                        new SimpleDate(15, 4, 1452)
+                ), WeekDays.SATURDAY
+        );
+    }
 }
