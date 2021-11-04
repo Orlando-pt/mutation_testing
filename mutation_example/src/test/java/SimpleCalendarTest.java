@@ -1,16 +1,15 @@
-
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class SimpleGregorianCalendarTest {
+public class SimpleCalendarTest {
 
-    private SimpleGregorianCalendar gregorianCalendar;
+    private SimpleCalendar gregorianCalendar;
 
     @BeforeEach
     void setUp() {
-        this.gregorianCalendar = new SimpleGregorianCalendar();
+        this.gregorianCalendar = new SimpleCalendar();
     }
 
     @AfterEach
