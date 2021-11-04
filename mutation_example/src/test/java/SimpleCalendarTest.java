@@ -43,6 +43,15 @@ public class SimpleCalendarTest {
     }
 
     @Test
+    void getDayOfWeek4Nov2021ShouldReturnThursday() {
+        assertEquals(
+                this.gregorianCalendar.getDayOfWeek(
+                        new SimpleDate(4, 11, 2021)
+                ), WeekDays.THURSDAY
+        );
+    }
+
+    @Test
     void getDayOfWeek15Apr1452ShouldReturnSaturday() {
         assertEquals(
                 this.gregorianCalendar.getDayOfWeek(
