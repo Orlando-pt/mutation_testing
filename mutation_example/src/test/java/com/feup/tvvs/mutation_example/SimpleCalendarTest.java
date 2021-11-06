@@ -1,7 +1,9 @@
 package com.feup.tvvs.mutation_example;
 
 import org.junit.jupiter.api.AfterEach;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,8 @@ public class SimpleCalendarTest {
     }
 
     @AfterEach
-    void tearDown() {}
+    void tearDown() {
+    }
 
     @Test
     void gregorianDateShouldReturnTrue() {
@@ -53,6 +56,17 @@ public class SimpleCalendarTest {
                         LocalDateTime.of(1300, 9, 4, 0, 0)
                 )
         );
+    }
+
+    @Test
+    void testGetGregorianDateWhenDateIsNotAllowed() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(-1, 1, 1, 0,
+                            0));
+                },
+                "Year must be greater than 0");
     }
 
     @Test
@@ -101,7 +115,7 @@ public class SimpleCalendarTest {
         assertEquals(
                 WeekDays.THURSDAY,
                 this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(1400, 1, 1, 0,0)
+                        LocalDateTime.of(1400, 1, 1, 0, 0)
                 )
         );
     }

@@ -9,7 +9,7 @@ public class SimpleCalendar {
     private final static int DAY_OF_CHANGE = 4;
 
     public WeekDays getDayOfWeek(LocalDateTime date) {
-        var gregorianDate = getGregorianDate(date);
+        LocalDateTime gregorianDate = getGregorianDate(date);
 
         int year = gregorianDate.getYear();
 
@@ -28,12 +28,11 @@ public class SimpleCalendar {
 
     // method that checks
     public LocalDateTime getGregorianDate(LocalDateTime date) {
-        // verificar se é antes ou depois de 1582
+        if (date.getYear() <= 0)
+            throw new IllegalArgumentException("Year must be greater than 0");
 
-        // se for depois quer dizer q ja é gregoriana
         if (dateIsGregorian(date)) return date;
 
-        // sn fazia simplesmente a transformacao
         return parseJulianToGregorian(date);
     }
 
