@@ -1,7 +1,5 @@
 package com.feup.tvvs.mutation_example;
 
-import com.feup.tvvs.mutation_example.SimpleCalendar;
-import com.feup.tvvs.mutation_example.WeekDays;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +33,24 @@ public class SimpleCalendarTest {
         assertFalse(
                 this.gregorianCalendar.dateIsGregorian(
                         LocalDateTime.of(1582, 10, 4, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void julianDateShouldReturnFalse2() {
+        assertFalse(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 9, 4, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void julianDateShouldReturnFalse3() {
+        assertFalse(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1300, 9, 4, 0, 0)
                 )
         );
     }

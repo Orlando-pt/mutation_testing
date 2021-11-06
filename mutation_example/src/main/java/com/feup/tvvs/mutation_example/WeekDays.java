@@ -22,8 +22,4 @@ public enum WeekDays {
     public static WeekDays valueOf(int weekDay) {
         return (WeekDays) map.get(weekDay);
     }
-
-    public int getValue() {
-        return value;
-    }
 }
