@@ -1,3 +1,5 @@
+package com.feup.tvvs.mutation_example;
+
 import java.util.HashMap;
 import java.util.Map;
 
