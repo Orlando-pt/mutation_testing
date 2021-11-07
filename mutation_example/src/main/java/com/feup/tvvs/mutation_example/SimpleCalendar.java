@@ -1,6 +1,9 @@
 package com.feup.tvvs.mutation_example;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SimpleCalendar {
     // TODO explicar o que isto e
@@ -25,6 +28,15 @@ public class SimpleCalendar {
                 + Math.floor((2.6 * parseMonth(gregorianDate.getMonthValue()) - 0.2)));
 
         return WeekDays.valueOf(Math.floorMod(result, 7));
+    }
+
+    public Map<LocalDateTime, WeekDays> getDaysOfWeek(List<LocalDateTime> dates) {
+        Map<LocalDateTime, WeekDays> mapWithResults = new LinkedHashMap<LocalDateTime, WeekDays>(dates.size());
+        
+        for (int i = 0; i < dates.size(); i++)
+            mapWithResults.put(dates.get(i), getDayOfWeek(dates.get(i)));
+
+        return mapWithResults;
     }
 
     // Tests Done
@@ -77,7 +89,11 @@ public class SimpleCalendar {
 
         // Equivalent Mutant
         // TODO conseguimos retirar se colocarmos como multiplo de 100
-        while (centuryYear < 1582) {
+        /**
+         * remove leap years of the Julian calendar
+         * that are not in the Gregorian calendar
+         */
+        while (centuryYear <= 1500) {
             if (centuryYear % 400 != 0)
                 toSubtract += 1;
 
