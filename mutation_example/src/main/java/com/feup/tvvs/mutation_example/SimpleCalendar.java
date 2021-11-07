@@ -41,6 +41,18 @@ public class SimpleCalendar {
         return mapWithResults;
     }
 
+    /**
+     * just a example of a equivalent mutant detected by PIT
+     */
+    public String reallyStupidExampleOfEquivalentMutation() {
+            int i = 2;
+            if ( i >= 1 ) {
+                return "foo";
+            }
+
+            return "doo";
+    }
+
     // Tests Done
     public LocalDateTime getGregorianDate(LocalDateTime date) {
         if (date.getYear() <= 0)
