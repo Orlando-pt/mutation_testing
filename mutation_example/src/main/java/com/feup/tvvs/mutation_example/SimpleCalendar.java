@@ -13,29 +13,31 @@ public class SimpleCalendar {
 
         int year = gregorianDate.getYear();
 
-        if (gregorianDate.getMonthValue() < 3){
-            year-=1;
+        if (gregorianDate.getMonthValue() < 3) {
+            year -= 1;
         }
 
         int century = parseCentury(year);
         int yearInTheCentury = parseYearInTheCentury(year);
 
-        long result = Math.round(gregorianDate.getDayOfMonth() + 5 * century + yearInTheCentury + Math.floor((century / 4)) + Math.floor((yearInTheCentury / 4))
+        long result = Math.round(gregorianDate.getDayOfMonth() + 5 * century + yearInTheCentury +
+                Math.floor((century / 4)) + Math.floor((yearInTheCentury / 4))
                 + Math.floor((2.6 * parseMonth(gregorianDate.getMonthValue()) - 0.2)));
 
         return WeekDays.valueOf(Math.floorMod(result, 7));
     }
 
-    // method that checks
+    // Tests Done
     public LocalDateTime getGregorianDate(LocalDateTime date) {
         if (date.getYear() <= 0)
-            throw new IllegalArgumentException("Year must be greater than 0");
+            throw new IllegalArgumentException("Year must be greater than 0.");
 
         if (dateIsGregorian(date)) return date;
 
         return parseJulianToGregorian(date);
     }
 
+    // Tests Done
     public boolean dateIsGregorian(LocalDateTime date) {
         if (date.getYear() < YEAR_OF_CHANGE)
             return false;
@@ -63,21 +65,23 @@ public class SimpleCalendar {
         return year % 100;
     }
 
-    private LocalDateTime parseJulianToGregorian(LocalDateTime date) {
-        int century = parseCentury(date.getYear()) * 100;
+    public LocalDateTime parseJulianToGregorian(LocalDateTime date) {
+        int centuryYear = parseCentury(date.getYear()) * 100;
 
-        int subtract = 0;
+        int toSubtract = 0;
 
-        if (date.getYear() > century) {
-            century += 100;
+        if (date.getYear() > centuryYear) {
+            centuryYear += 100;
         }
 
-        for (; century < 1582; century += 100) {
-            if (century % 400 != 0)
-                subtract += 1;
+        while (centuryYear < 1582) {
+            if (centuryYear % 400 != 0)
+                toSubtract += 1;
+
+            centuryYear += 100;
         }
 
-        return date.plusDays(10 - subtract);
+        return date.plusDays(10 - toSubtract);
     }
 
 }
