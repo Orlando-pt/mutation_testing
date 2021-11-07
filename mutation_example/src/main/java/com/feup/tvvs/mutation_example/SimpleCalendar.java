@@ -35,6 +35,8 @@ public class SimpleCalendar {
         
         for (int i = 0; i < dates.size(); i++)
             mapWithResults.put(dates.get(i), getDayOfWeek(dates.get(i)));
+        
+        // TODO catch errors when calculating the date
 
         return mapWithResults;
     }

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class SimpleCalendarTest {
 
@@ -48,6 +50,30 @@ public class SimpleCalendarTest {
                 )
         );
     }
+
+    /**
+     * getDaysOfWeek TESTS
+     */
+    @Test
+    void testGetDaysOfWeekWithValidDates() {
+        LocalDateTime friday = LocalDateTime.of(2021, 11, 12, 0, 0, 0);
+        LocalDateTime saturday = LocalDateTime.of(2021, 11, 13, 0, 0, 0);
+        LocalDateTime sunday = LocalDateTime.of(2021, 11, 14, 0, 0, 0);
+
+        List<LocalDateTime> dates = List.of(friday, saturday, sunday);
+
+        var expectedResults = new LinkedHashMap<>(dates.size());
+        expectedResults.put(friday, WeekDays.FRIDAY);
+        expectedResults.put(saturday, WeekDays.SATURDAY);
+        expectedResults.put(sunday, WeekDays.SUNDAY);
+
+        assertEquals(
+                expectedResults,
+                this.gregorianCalendar.getDaysOfWeek(dates)
+        );        
+    }
+
+    // test this method when it gets invalid date
 
     /**
      * testing Julian Date
