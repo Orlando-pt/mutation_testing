@@ -44,7 +44,7 @@ public class SimpleCalendarTest {
         assertEquals(
                 WeekDays.FRIDAY,
                 this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(2021, 11, 12, 0, 0)
+                        LocalDateTime.of(2021, 2, 12, 0, 0)
                 )
         );
     }
@@ -67,11 +67,11 @@ public class SimpleCalendarTest {
 
 
     @Test
-    void testGetDayOfWeekWhen1Jan1400ShouldReturnThursday() {
+    void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
         assertEquals(
-                WeekDays.THURSDAY,
+                WeekDays.TUESDAY,
                 this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(1400, 1, 1, 0, 0)
+                        LocalDateTime.of(1400, 4, 2, 0, 0)
                 )
         );
     }
@@ -84,6 +84,34 @@ public class SimpleCalendarTest {
                         LocalDateTime.of(1, 1, 1, 0, 0)
                 )
         );
+    }
+
+    /**
+     * ----------------------------- *
+     * getGregorianDate TESTS      *
+     * ----------------------------- *
+     */
+
+    @Test
+    void testGetGregorianDateWhenYearIsLessThanZeroShouldThrowIllegalArgumentException() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(-1, 1, 1, 0,
+                            0));
+                },
+                "Year must be greater than 0.");
+    }
+
+    @Test
+    void testGetGregorianDateWhenYearIsZeroShouldThrowIllegalArgumentException() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(0, 1, 1, 0,
+                            0));
+                },
+                "Year must be greater than 0.");
     }
 
     /**
@@ -126,23 +154,6 @@ public class SimpleCalendarTest {
                         LocalDateTime.of(1300, 9, 4, 0, 0)
                 )
         );
-    }
-
-    /**
-     * ----------------------------- *
-     * getGregorianDate TESTS      *
-     * ----------------------------- *
-     */
-
-    @Test
-    void testGetGregorianDateWhenYearIsNotAllowedShouldThrowIllegalArgumentException() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> {
-                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(-1, 1, 1, 0,
-                            0));
-                },
-                "Year must be greater than 0.");
     }
 
     /**

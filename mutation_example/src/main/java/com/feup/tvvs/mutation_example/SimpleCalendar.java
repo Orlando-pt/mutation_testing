@@ -52,6 +52,7 @@ public class SimpleCalendar {
     }
 
     private int parseMonth(int month) {
+        //Conditional Value Mutant se n se testar o getdayoftheweek com 2
         if (month > 2) return month - 2;
 
         return month + 10;
@@ -74,6 +75,7 @@ public class SimpleCalendar {
             centuryYear += 100;
         }
 
+        // Equivalent Mutant
         while (centuryYear < 1582) {
             if (centuryYear % 400 != 0)
                 toSubtract += 1;
