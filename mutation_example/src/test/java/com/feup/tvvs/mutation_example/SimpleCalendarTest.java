@@ -69,9 +69,9 @@ public class SimpleCalendarTest {
     @Test
     void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
         assertEquals(
-                WeekDays.TUESDAY,
+                WeekDays.MONDAY,
                 this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(1400, 4, 2, 0, 0)
+                        LocalDateTime.of(1400, 3, 1, 0, 0)
                 )
         );
     }
