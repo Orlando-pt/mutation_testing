@@ -67,17 +67,13 @@
                         <param>com.feup.tvvs.*</param>
                     </targetTests>
                     <mutators>
-                        <!-- default mutators-->
-                        <mutator>INCREMENTS</mutator>
-                        <mutator>VOID_METHOD_CALLS</mutator>
-                        <mutator>RETURN_VALS</mutator>
-                        <mutator>MATH</mutator>
-                        <mutator>NEGATE_CONDITIONALS</mutator>
-                        <mutator>INVERT_NEGS</mutator>
-                        <mutator>CONDITIONALS_BOUNDARY</mutator>
-                        
-                        <!-- optional mutators-->
-                        <!-- <mutator>REMOVE_CONDITIONALS</mutator> -->
+                        <!--
+                            Check all mutators at
+                            https://pitest.org/quickstart/mutators/
+                        -->
+                        <mutator>DEFAULTS</mutator>
+                        <!-- <mutator>STRONGER</mutator> -->
+                        <!-- <mutator>ALL</mutator> -->
                     </mutators>
                 </configuration>
             </plugin>
