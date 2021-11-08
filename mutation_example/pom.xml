@@ -66,6 +66,15 @@
                     <targetTests>
                         <param>com.feup.tvvs.*</param>
                     </targetTests>
+                    <mutators>
+                        <!--
+                            Check all mutators at
+                            https://pitest.org/quickstart/mutators/
+                        -->
+                        <mutator>DEFAULTS</mutator>
+                        <!-- <mutator>STRONGER</mutator> -->
+                        <!-- <mutator>ALL</mutator> -->
+                    </mutators>
                 </configuration>
             </plugin>
         </plugins>

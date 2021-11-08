@@ -1,4 +1,11 @@
 ##############################
+## More unnecessary files
+##############################
+.classpath
+.settings/
+.project
+
+##############################
 ## Visual Studio Code
 ##############################
 .vscode/
