@@ -161,6 +161,27 @@ public class SimpleCalendarTest {
         );
     }
 
+    /** Exercício 2
+     * REMOVE_CONDITIONALS_EQ_IF
+    @Test
+    void testDateIsGregorianWhenYearLessThan1982ShouldReturnFalse() {
+        assertTrue(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1982, 10, 4, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void testDateIssGregorianWhenYearLessThan1982ShouldReturnFalse() {
+        assertTrue(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 11, 4, 0, 0)
+                )
+        );
+    }
+    */
+
     /**
      * ----------------------------- *
      * parseJulianToGregorian TESTS      *
