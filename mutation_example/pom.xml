@@ -71,7 +71,6 @@
                             Check all mutators at
                             https://pitest.org/quickstart/mutators/
                         -->
-                        <mutator>DEFAULTS</mutator>
                         <!-- <mutator>STRONGER</mutator> -->
                         <!-- <mutator>ALL</mutator> -->
                     </mutators>

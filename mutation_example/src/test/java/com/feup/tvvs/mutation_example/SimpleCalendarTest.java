@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class SimpleCalendarTest {
 
@@ -41,39 +39,6 @@ public class SimpleCalendarTest {
         );
     }
 
-    @Test
-    void testGetDayOfWeekWhen4Nov2021ShouldReturnThursday() {
-        assertEquals(
-                WeekDays.FRIDAY,
-                this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(2021, 2, 12, 0, 0)
-                )
-        );
-    }
-
-    /**
-     * getDaysOfWeek TESTS
-     */
-    @Test
-    void testGetDaysOfWeekWithValidDates() {
-        LocalDateTime friday = LocalDateTime.of(2021, 11, 12, 0, 0, 0);
-        LocalDateTime saturday = LocalDateTime.of(2021, 11, 13, 0, 0, 0);
-        LocalDateTime sunday = LocalDateTime.of(2021, 11, 14, 0, 0, 0);
-
-        List<LocalDateTime> dates = List.of(friday, saturday, sunday);
-
-        var expectedResults = new LinkedHashMap<>(dates.size());
-        expectedResults.put(friday, WeekDays.FRIDAY);
-        expectedResults.put(saturday, WeekDays.SATURDAY);
-        expectedResults.put(sunday, WeekDays.SUNDAY);
-
-        assertEquals(
-                expectedResults,
-                this.gregorianCalendar.getDaysOfWeek(dates)
-        );        
-    }
-
-    // test this method when it gets invalid date
 
     /**
      * testing Julian Date
@@ -91,16 +56,30 @@ public class SimpleCalendarTest {
         );
     }
 
+    /**
+     * Exemplo 1 Conditional Boundary Mutator - Linha 19 e linha 56
+     * Se for data juliana, ainda se vão somar dias, se se colocar dia 28 é possível que passe para o mês 4
+     *
+     * @Test void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
+     * assertEquals(
+     * WeekDays.WEDNESDAY,
+     * this.gregorianCalendar.getDayOfWeek(
+     * LocalDateTime.of(1600, 3, 1, 0, 0)
+     * )
+     * );
+     * }
+     *
+     * @Test void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
+     *      * assertEquals(
+     *      * WeekDays.TUESDAY,
+     *      * this.gregorianCalendar.getDayOfWeek(
+     *      * LocalDateTime.of(1600, 2, 1, 0, 0)
+     *      * )
+     *      * );
+     *      * }
+     *
+     */
 
-    @Test
-    void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
-        assertEquals(
-                WeekDays.MONDAY,
-                this.gregorianCalendar.getDayOfWeek(
-                        LocalDateTime.of(1400, 3, 1, 0, 0)
-                )
-        );
-    }
 
     @Test
     void testGetDayOfWeekWhen1Jan0001ShouldReturnSaturday() {
@@ -193,7 +172,7 @@ public class SimpleCalendarTest {
         assertEquals(
                 10,
                 this.gregorianCalendar
-                        .parseJulianToGregorian(LocalDateTime.of(1352, 1, 2,5, 5))
+                        .parseJulianToGregorian(LocalDateTime.of(1352, 1, 2, 5, 5))
                         .getDayOfMonth()
         );
     }
@@ -203,7 +182,7 @@ public class SimpleCalendarTest {
         assertEquals(
                 12,
                 this.gregorianCalendar
-                        .parseJulianToGregorian(LocalDateTime.of(1552, 1, 2,5, 5))
+                        .parseJulianToGregorian(LocalDateTime.of(1552, 1, 2, 5, 5))
                         .getDayOfMonth()
         );
     }
@@ -213,7 +192,7 @@ public class SimpleCalendarTest {
         assertEquals(
                 9,
                 this.gregorianCalendar
-                        .parseJulianToGregorian(LocalDateTime.of(1200, 1, 2,5, 5))
+                        .parseJulianToGregorian(LocalDateTime.of(1200, 1, 2, 5, 5))
                         .getDayOfMonth()
         );
     }
