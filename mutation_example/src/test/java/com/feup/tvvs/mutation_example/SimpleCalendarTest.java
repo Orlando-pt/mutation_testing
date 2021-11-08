@@ -188,6 +188,43 @@ public class SimpleCalendarTest {
      * ----------------------------- *
      */
 
+    // TODO
+    /**
+     * temos de adicionar estes testes quando passamos a utilizar o segundo
+     * grupo de operadores
+     */
+    
+    @Test
+    void killMutatorThatReplacesFirstConditionOnDateIsGregorianMethod() {
+        assertTrue(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1583, 10, 3, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void killMutatorThatReplacesSecondConditionOnDateIsGregorianMethod() {
+        assertTrue(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 11, 3, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void test1() {
+        assertEquals(
+                10,
+                this.gregorianCalendar
+                        .parseJulianToGregorian(LocalDateTime.of(1352, 1, 2,5, 5))
+                        .getDayOfMonth()
+        );
+    }
+    /**
+     * fim dos testes adicionais
+     */
+
     @Test
     void testParseJulianToGregorianWhenYearIsTwoCenturyDatesNotDivisibleBy400AwayOf1582ShouldAdd8() {
         assertEquals(

@@ -85,9 +85,10 @@ public class SimpleCalendar {
 
         int toSubtract = 0;
 
-        if (date.getYear() >= centuryYear) {
-            centuryYear += 100;
-        }
+        // if (date.getYear() >= centuryYear) {
+        //     centuryYear += 100;
+        // }
+        centuryYear += 100;
 
         // Equivalent Mutant
         // TODO conseguimos retirar se colocarmos como multiplo de 100
