@@ -20,9 +20,9 @@ public class SimpleCalendar {
         int century = parseCentury(year);
         int yearInTheCentury = parseYearInTheCentury(year);
 
-        long result = Math.round(gregorianDate.getDayOfMonth() + 5 * century + yearInTheCentury +
-                Math.floor(century / 4) + Math.floor(yearInTheCentury / 4)
-                + Math.floor(2.6 * parseMonth(gregorianDate.getMonthValue()) - 0.2));
+        long result = Math.round(gregorianDate.getDayOfMonth() +
+                Math.floor(2.6 * parseMonth(gregorianDate.getMonthValue()) - 0.2) + yearInTheCentury +
+                Math.floor(yearInTheCentury / 4) + Math.floor(century / 4) - 2 * century);
 
         return WeekDays.valueOf(Math.floorMod(result, 7));
     }

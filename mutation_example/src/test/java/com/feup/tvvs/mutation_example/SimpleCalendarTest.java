@@ -162,7 +162,7 @@ public class SimpleCalendarTest {
     }
 
     /** Exercício 2
-     * REMOVE_CONDITIONALS_EQ_IF
+     * REMOVE_CONDITIONALS_EQ_IF - linha 48
     @Test
     void testDateIsGregorianWhenYearLessThan1982ShouldReturnFalse() {
         assertTrue(
