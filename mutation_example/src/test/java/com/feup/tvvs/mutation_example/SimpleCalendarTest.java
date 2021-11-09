@@ -23,6 +23,65 @@ public class SimpleCalendarTest {
     }
     
     /**
+    * Tests to complete in practical class
+    */
+
+    // Exercise 1
+    @Test
+    void testToKillMutantOne() {
+        assertEquals(
+        WeekDays.WEDNESDAY,
+        this.gregorianCalendar.getDayOfWeek(
+        LocalDateTime.of(1600, 3, 1, 0, 0)
+        )
+        );
+    }
+    
+    @Test
+    void testToKillMutantTwo() {
+        assertEquals(
+        WeekDays.TUESDAY,
+        this.gregorianCalendar.getDayOfWeek(
+        LocalDateTime.of(1600, 2, 1, 0, 0)
+        )
+        );
+    }
+
+    // End exercise 1
+    
+    // Exercise 2
+    @Test
+    void testToKillMutantThree() {
+        assertTrue(
+        this.gregorianCalendar.dateIsGregorian(
+        LocalDateTime.of(1982, 10, 4, 0, 0)
+        )
+        );
+    }
+    
+    @Test
+    void testToKillMutantFour() {
+        assertTrue(
+        this.gregorianCalendar.dateIsGregorian(
+        LocalDateTime.of(1582, 11, 4, 0, 0)
+        )
+        );
+    }
+
+    // End exercise 2
+    
+    // Exercise 4
+    @Test void testToKillMutantFive() {
+        assertFalse(
+        this.gregorianCalendar.dateIsGregorian(
+        LocalDateTime.of(1581, 11, 4, 0, 0)
+        )
+        );
+    }
+
+    // End exercise 2
+    
+    /**
     * ----------------------------- *
     * getDayOfWeek TESTS      *
     * ----------------------------- *
@@ -56,59 +115,6 @@ public class SimpleCalendarTest {
         );
     }
     
-    @Test
-    void teste1() {
-        assertEquals(
-        WeekDays.WEDNESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 3, 1, 0, 0)
-        )
-        );
-    }
-    
-    @Test
-    void teste2() {
-        assertEquals(
-        WeekDays.TUESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 2, 1, 0, 0)
-        )
-        );
-    }
-    
-    @Test
-    void testeToKillMutantLine75() {
-        assertEquals(
-        LocalDateTime.of(1400, 1, 10, 0, 0, 0),
-        this.gregorianCalendar.parseJulianToGregorian(
-        LocalDateTime.of(1400, 1, 1, 0, 0, 0)
-        )
-        );
-    }
-    
-    /**
-    * Exemplo 1 Conditional Boundary Mutator - Linha 19 e linha 56
-    * Se for data juliana, ainda se vão somar dias, se se colocar dia 28 é possível que passe para o mês 4
-    *
-    * @Test void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
-        * assertEquals(
-        * WeekDays.WEDNESDAY,
-        * this.gregorianCalendar.getDayOfWeek(
-        * LocalDateTime.of(1600, 3, 1, 0, 0)
-        * )
-        * );
-        * }
-        * @Test void testGetDayOfWeekWhen1Mar1400ShouldReturnMonday() {
-            * * assertEquals(
-            * * WeekDays.TUESDAY,
-            * * this.gregorianCalendar.getDayOfWeek(
-            * * LocalDateTime.of(1600, 2, 1, 0, 0)
-            * * )
-            * * );
-            * * }
-            */
-            
-            
     @Test
     void testGetDayOfWeekWhen1Jan0001ShouldReturnSaturday() {
         assertEquals(
@@ -146,6 +152,16 @@ public class SimpleCalendarTest {
             0));
         },
         "Year must be greater than 0.");
+    }
+
+    @Test
+    void testParseJulianToGregorianWhenDateIsJulianThenShouldReturnGregorianDate() {
+        assertEquals(
+        LocalDateTime.of(1400, 1, 10, 0, 0, 0),
+        this.gregorianCalendar.parseJulianToGregorian(
+        LocalDateTime.of(1400, 1, 1, 0, 0, 0)
+        )
+        );
     }
     
     /**
@@ -190,37 +206,6 @@ public class SimpleCalendarTest {
         );
     }
     
-    //      Exercício 2
-    //      REMOVE_CONDITIONALS_EQ_IF - linha 48
-    @Test void testDateIsGregorianWhenYearLessThan1982ShouldReturnFalse() {
-        assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1982, 10, 4, 0, 0)
-        )
-        );
-    }
-    
-    @Test void testDateIssGregorianWhenYearLessThan1982ShouldReturnFalse() {
-        assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 11, 4, 0, 0)
-        )
-        );
-    }
-    
-    @Test void teste4() {
-        assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1581, 11, 4, 0, 0)
-        )
-        );
-    }
-
-    /**
-     * Remover o mutante do group ALL
-     * linha 42
-     */
-    
     /**
     * ----------------------------- *
     * parseJulianToGregorian TESTS      *
@@ -257,4 +242,3 @@ public class SimpleCalendarTest {
         );
     }
 }
-        
