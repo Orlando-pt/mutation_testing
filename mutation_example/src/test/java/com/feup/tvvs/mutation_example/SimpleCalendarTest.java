@@ -29,22 +29,12 @@ public class SimpleCalendarTest {
     // Exercise 1
     @Test
     void testToKillMutantOne() {
-        assertEquals(
-        WeekDays.WEDNESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 3, 1, 0, 0)
-        )
-        );
+        // TODO
     }
     
     @Test
     void testToKillMutantTwo() {
-        assertEquals(
-        WeekDays.TUESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 2, 1, 0, 0)
-        )
-        );
+        // TODO
     }
 
     // End exercise 1
@@ -52,34 +42,22 @@ public class SimpleCalendarTest {
     // Exercise 2
     @Test
     void testToKillMutantThree() {
-        assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1982, 10, 4, 0, 0)
-        )
-        );
+        // TODO
     }
     
     @Test
     void testToKillMutantFour() {
-        assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 11, 4, 0, 0)
-        )
-        );
+        // TODO
     }
 
     // End exercise 2
     
     // Exercise 4
     @Test void testToKillMutantFive() {
-        assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1581, 11, 4, 0, 0)
-        )
-        );
+        // TODO
     }
 
-    // End exercise 2
+    // End exercise 4
     
     /**
     * ----------------------------- *
