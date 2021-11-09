@@ -72,9 +72,9 @@ public class SimpleCalendar {
         int toSubtract = 0;
 
         //TODO Ex3, verificar que é criado um mutante equivalente e pode-se fazer refactoering pq é dead code
-        if (date.getYear() >= centuryYear) {
-            centuryYear += 100;
-        }
+        // if (date.getYear() >= centuryYear) {
+        centuryYear += 100;
+        // }
 
         /**
          * remove leap years of the Julian calendar
