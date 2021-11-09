@@ -10,235 +10,251 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 public class SimpleCalendarTest {
-    
+
     private SimpleCalendar gregorianCalendar;
-    
+
     @BeforeEach
     void setUp() {
         this.gregorianCalendar = new SimpleCalendar();
     }
-    
+
     @AfterEach
     void tearDown() {
     }
-    
+
     /**
-    * Tests to complete in practical class
-    */
+     * Tests to complete in practical class
+     */
 
     // Exercise 1
     @Test
     void testToKillMutantOne() {
         assertEquals(
-        WeekDays.WEDNESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 3, 1, 0, 0)
-        )
+                WeekDays.WEDNESDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1600, 3, 1, 0, 0)
+
+                )
         );
     }
-    
+
     @Test
     void testToKillMutantTwo() {
         assertEquals(
-        WeekDays.TUESDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1600, 2, 1, 0, 0)
-        )
+                WeekDays.TUESDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1600, 2, 1, 0, 0)
+
+                )
+        );
+    }
+
+    @Test
+    void testToKillMutantThree() {
+        assertEquals(
+                WeekDays.SUNDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1500, 3, 1, 0, 0)
+
+                )
         );
     }
 
     // End exercise 1
-    
+
     // Exercise 2
-    @Test
-    void testToKillMutantThree() {
-        assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1982, 10, 4, 0, 0)
-        )
-        );
-    }
-    
     @Test
     void testToKillMutantFour() {
         assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 11, 4, 0, 0)
-        )
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1982, 10, 4, 0, 0)
+                )
+        );
+    }
+
+    @Test
+    void testToKillMutantFive() {
+        assertTrue(
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 11, 4, 0, 0)
+                )
         );
     }
 
     // End exercise 2
-    
-    // Exercise 4
-    @Test void testToKillMutantFive() {
-        assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1581, 11, 4, 0, 0)
-        )
+
+    // Exercise 3
+    @Test
+    void testToKillMutantSix() {
+        assertEquals(
+                WeekDays.MONDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(200, 2, 4, 0, 0)
+
+                )
         );
     }
 
-    // End exercise 2
-    
+    // End exercise 3
+
     /**
-    * ----------------------------- *
-    * getDayOfWeek TESTS      *
-    * ----------------------------- *
-    */
-    
+     * ----------------------------- *
+     * getDayOfWeek TESTS      *
+     * ----------------------------- *
+     */
+
     @Test
     void testGetDayOfWeekWhen24Jan1988ShouldReturnSunday() {
         assertEquals(
-        WeekDays.SUNDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1988, 1, 24, 0, 0)
-        
-        )
+                WeekDays.SUNDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1988, 1, 24, 0, 0)
+
+                )
         );
     }
-    
-    
+
+
     /**
-    * testing Julian Date
-    * Legend has it that leonardo da vinci was born
-    * on a beautiful Saturday morning of April 15, 1452
-    * Let's see if this is true
-    */
+     * testing Julian Date
+     * Legend has it that leonardo da vinci was born
+     * on a beautiful Saturday morning of April 15, 1452
+     * Let's see if this is true
+     */
     @Test
     void testGetDayOfWeekWhen15Apr1452ShouldReturnSaturday() {
         assertEquals(
-        WeekDays.SATURDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1452, 4, 15, 0, 0)
-        )
+                WeekDays.SATURDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1452, 4, 15, 0, 0)
+                )
         );
     }
-    
+
     @Test
     void testGetDayOfWeekWhen1Jan0001ShouldReturnSaturday() {
         assertEquals(
-        WeekDays.SATURDAY,
-        this.gregorianCalendar.getDayOfWeek(
-        LocalDateTime.of(1, 1, 1, 0, 0)
-        )
+                WeekDays.SATURDAY,
+                this.gregorianCalendar.getDayOfWeek(
+                        LocalDateTime.of(1, 1, 1, 0, 0)
+                )
         );
     }
-    
-    
+
+
     /**
-    * ----------------------------- *
-    * getGregorianDate TESTS      *
-    * ----------------------------- *
-    */
-    
+     * ----------------------------- *
+     * getGregorianDate TESTS      *
+     * ----------------------------- *
+     */
+
     @Test
     void testGetGregorianDateWhenYearIsLessThanZeroShouldThrowIllegalArgumentException() {
         assertThrows(
-        IllegalArgumentException.class,
-        () -> {
-            this.gregorianCalendar.getGregorianDate(LocalDateTime.of(-1, 1, 1, 0,
-            0));
-        },
-        "Year must be greater than 0.");
+                IllegalArgumentException.class,
+                () -> {
+                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(-1, 1, 1, 0,
+                            0));
+                },
+                "Year must be greater than 0.");
     }
-    
+
     @Test
     void testGetGregorianDateWhenYearIsZeroShouldThrowIllegalArgumentException() {
         assertThrows(
-        IllegalArgumentException.class,
-        () -> {
-            this.gregorianCalendar.getGregorianDate(LocalDateTime.of(0, 1, 1, 0,
-            0));
-        },
-        "Year must be greater than 0.");
+                IllegalArgumentException.class,
+                () -> {
+                    this.gregorianCalendar.getGregorianDate(LocalDateTime.of(0, 1, 1, 0,
+                            0));
+                },
+                "Year must be greater than 0.");
     }
 
     @Test
     void testParseJulianToGregorianWhenDateIsJulianThenShouldReturnGregorianDate() {
         assertEquals(
-        LocalDateTime.of(1400, 1, 10, 0, 0, 0),
-        this.gregorianCalendar.parseJulianToGregorian(
-        LocalDateTime.of(1400, 1, 1, 0, 0, 0)
-        )
+                LocalDateTime.of(1400, 1, 9, 0, 0, 0),
+                this.gregorianCalendar.parseJulianToGregorian(
+                        LocalDateTime.of(1400, 1, 1, 0, 0, 0)
+                )
         );
     }
-    
+
     /**
-    * ----------------------------- *
-    * dateIsGregorian TESTS      *
-    * ----------------------------- *
-    */
-    
+     * ----------------------------- *
+     * dateIsGregorian TESTS      *
+     * ----------------------------- *
+     */
+
     @Test
     void testDateIsGregorianWhenDateAfterChangeShouldReturnTrue() {
         assertTrue(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 10, 5, 0, 0)
-        )
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 10, 5, 0, 0)
+                )
         );
     }
-    
+
     @Test
     void testDateIsGregorianWhenMonth10AndYear1582AndDayLessThan5ShouldReturnFalse() {
         assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 10, 4, 0, 0)
-        )
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 10, 4, 0, 0)
+                )
         );
     }
-    
+
     @Test
     void testDateIsGregorianWhenMonthLessThan10AndYear1582ShouldReturnFalse() {
         assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1582, 9, 4, 0, 0)
-        )
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1582, 9, 4, 0, 0)
+                )
         );
     }
-    
+
     @Test
     void testDateIsGregorianWhenYearLessThan1582ShouldReturnFalse() {
         assertFalse(
-        this.gregorianCalendar.dateIsGregorian(
-        LocalDateTime.of(1300, 9, 4, 0, 0)
-        )
+                this.gregorianCalendar.dateIsGregorian(
+                        LocalDateTime.of(1300, 9, 4, 0, 0)
+                )
         );
     }
-    
+
     /**
-    * ----------------------------- *
-    * parseJulianToGregorian TESTS      *
-    * ----------------------------- *
-    */
-    
+     * ----------------------------- *
+     * parseJulianToGregorian TESTS      *
+     * ----------------------------- *
+     */
+
     @Test
     void testParseJulianToGregorianWhenYearIsTwoCenturyDatesNotDivisibleBy400AwayOf1582ShouldAdd8() {
         assertEquals(
-        10,
-        this.gregorianCalendar
-        .parseJulianToGregorian(LocalDateTime.of(1352, 1, 2, 5, 5))
-        .getDayOfMonth()
+                10,
+                this.gregorianCalendar
+                        .parseJulianToGregorian(LocalDateTime.of(1352, 1, 2, 5, 5))
+                        .getDayOfMonth()
         );
     }
-    
+
     @Test
     void testParseJulianToGregorianWhenYearHaveNoCenturyDatesAwayOf1582ShouldAdd10() {
         assertEquals(
-        12,
-        this.gregorianCalendar
-        .parseJulianToGregorian(LocalDateTime.of(1552, 1, 2, 5, 5))
-        .getDayOfMonth()
+                12,
+                this.gregorianCalendar
+                        .parseJulianToGregorian(LocalDateTime.of(1552, 1, 2, 5, 5))
+                        .getDayOfMonth()
         );
     }
-    
+
     @Test
     void testParseJulianToGregorianWhenYearHaveFourCenturyDatesAwayOf1582AndOneBeingDivisibleBy400ShouldAdd7() {
         assertEquals(
-        9,
-        this.gregorianCalendar
-        .parseJulianToGregorian(LocalDateTime.of(1200, 1, 2, 5, 5))
-        .getDayOfMonth()
+                9,
+                this.gregorianCalendar
+                        .parseJulianToGregorian(LocalDateTime.of(1200, 1, 2, 5, 5))
+                        .getDayOfMonth()
         );
     }
 }
