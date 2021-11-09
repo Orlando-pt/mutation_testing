@@ -121,7 +121,7 @@ public class SimpleCalendar {
 
         int toSubtract = 0;
 
-        if (date.getYear() >= centuryYear) {
+        if (date.getYear() > centuryYear || date.getYear() == centuryYear && date.getMonthValue() >= 3) {
             centuryYear += 100;
         }
 
