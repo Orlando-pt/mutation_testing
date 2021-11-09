@@ -18,10 +18,12 @@ class CalculatorTest {
     void isPositive() {
         assertTrue(calculator.isPositive(1));
 
-        // 0 is also considered positive
-        assertTrue(calculator.isPositive(0));
-
         // check if a negative number returns False
         assertFalse(calculator.isPositive(-1));
+    }
+
+    @Test
+    void testZeroBoundary() {
+        assertTrue(calculator.isPositive(0));
     }
 }
