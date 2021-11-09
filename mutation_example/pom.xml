@@ -75,7 +75,7 @@
                         <!-- <mutator>ALL</mutator> -->
                     </mutators>
                     <!-- <withHistory>true</withHistory> -->
-                    <mutationThreshold>100</mutationThreshold>
+                    <!-- <mutationThreshold>100</mutationThreshold> -->
                     <!-- <coverageThreshold>100</coverageThreshold>  -->
                 </configuration>
             </plugin>
