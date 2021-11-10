@@ -141,7 +141,7 @@ public class SimpleCalendarTest {
     @Test
     void testParseJulianToGregorianWhenDateIsJulianThenShouldReturnGregorianDate() {
         assertEquals(
-                LocalDateTime.of(1400, 1, 10, 0, 0, 0),
+                LocalDateTime.of(1400, 1, 9, 0, 0, 0),
                 this.gregorianCalendar.parseJulianToGregorian(
                         LocalDateTime.of(1400, 1, 1, 0, 0, 0)
                 )
