@@ -117,12 +117,14 @@ public class SimpleCalendar {
      * @return @param date + 10 days - 1 day (1500 not divisible by 400)
      */
     public LocalDateTime parseJulianToGregorian(LocalDateTime date) {
-        int centuryYear = parseCentury(date.getYear()) * 100;
+        int initialCenturyYear = parseCentury(date.getYear()) * 100;
+
+        int centuryYear = initialCenturyYear + 100;
 
         int toSubtract = 0;
 
-        if (date.getYear() > centuryYear || date.getYear() == centuryYear && date.getMonthValue() >= 3) {
-            centuryYear += 100;
+        if (date.getYear() == initialCenturyYear && date.getMonthValue() < 3) {
+            centuryYear -= 100;
         }
 
         /**
