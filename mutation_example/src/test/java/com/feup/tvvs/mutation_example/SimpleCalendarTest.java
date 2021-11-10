@@ -37,28 +37,33 @@ public class SimpleCalendarTest {
         // TODO
     }
 
-    // End exercise 1
-
-    // Exercise 2
     @Test
     void testToKillMutantThree() {
         // TODO
     }
 
+    // End exercise 1
+
+    // Exercise 2
     @Test
     void testToKillMutantFour() {
         // TODO
     }
 
-    // End exercise 2
-
-    // Exercise 4
     @Test
     void testToKillMutantFive() {
         // TODO
     }
 
-    // End exercise 4
+    // End exercise 2
+
+    // Exercise 3
+    @Test
+    void testToKillMutantSix() {
+        // TODO
+    }
+
+    // End exercise 3
 
     /**
      * ----------------------------- *
